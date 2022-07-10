@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import Router from './router';
-import 'normalize.css';
+import { CssBaseline } from '@mui/material';
+import GlobalStyle from './style';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
+    <CssBaseline />
+    <GlobalStyle />
     <BrowserRouter>
       <Router />
     </BrowserRouter>
