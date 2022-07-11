@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { asideCloseWidth, asideOpenWidth, transitionTime } from '../style';
 import { PushPinOutlined } from '@mui/icons-material';
-import LogoSvg from './LogoSvg';
+import Logo from './Logo';
 import { MouseEventHandler } from 'react';
 
 interface asideProps {
@@ -14,7 +14,7 @@ interface pinIconProps {
 }
 
 // style component
-const Logo = styled(LogoSvg)``;
+const StyledLogo = styled(Logo)``;
 const IconPushPin = styled(PushPinOutlined)<pinIconProps>`
   cursor: pointer;
   position: absolute;
@@ -34,10 +34,10 @@ const FixedAside = styled('aside')<Partial<asideProps>>`
   &:hover {
     left: 0;
   }
-  ${Logo} {
+  ${StyledLogo} {
     position: absolute;
     left: 50%;
-    top: 20px;
+    top: 30px;
     transform: translate(-50%);
   }
   ${IconPushPin} {
@@ -50,7 +50,7 @@ const FixedAside = styled('aside')<Partial<asideProps>>`
 export default function Aside(props: asideProps) {
   return (
     <FixedAside $close={props.$close}>
-      <LogoSvg $color="#deebff" />
+      <StyledLogo $color="#deebff" />
       <IconPushPin onClick={props.pinHandle} />
     </FixedAside>
   );

@@ -2,14 +2,19 @@ import styled from 'styled-components';
 import { SecurityArea } from '../style';
 import { MenuItem, Divider, MenuList, ClickAwayListener, Avatar, Popper } from '@mui/material';
 import { useRef, useState, MouseEvent } from 'react';
-import LogoSvg from './LogoSvg';
+import Logo from './Logo';
 
 // style component
-const Title = styled('div')`
-  height: 60%;
+const StyledTop = styled('div')`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 60px;
   border-bottom: 1px solid #f0f0f0;
+  background-color: #ffffff;
+  z-index: 1;
 `;
-const UserAvatar = styled(Avatar)``;
+const StyledAvatar = styled(Avatar)``;
 const UserControl = styled('div')`
   position: relative;
   display: flex;
@@ -17,7 +22,7 @@ const UserControl = styled('div')`
   align-items: center;
   cursor: pointer;
   user-select: none;
-  ${UserAvatar} {
+  ${StyledAvatar} {
   }
   & span {
     margin-left: 10px;
@@ -33,7 +38,7 @@ const UserOptionPopper = styled(Popper)`
 `;
 
 // COMPONENT
-export default function TopTitle() {
+export default function Top() {
   const anchorEl = useRef<HTMLDivElement>(null);
   const handleMenuClick = (event: MouseEvent<HTMLElement>) => {
     handleMenuToggle();
@@ -45,13 +50,13 @@ export default function TopTitle() {
   const [userOption, setUserOption] = useState<boolean>(false);
 
   return (
-    <Title>
+    <StyledTop>
       <SecurityArea>
-        <LogoSvg $color="#14a2ff" $size={86} />
+        <Logo $color="#14a2ff" $size={86} />
         <UserControl ref={anchorEl} onClick={handleMenuClick}>
-          <UserAvatar src="https://mui.com/static/images/avatar/3.jpg" variant="rounded">
+          <StyledAvatar src="https://mui.com/static/images/avatar/3.jpg" variant="rounded">
             user name
-          </UserAvatar>
+          </StyledAvatar>
           <span>user name</span>
         </UserControl>
 
@@ -72,6 +77,6 @@ export default function TopTitle() {
           </ClickAwayListener>
         </UserOptionPopper>
       </SecurityArea>
-    </Title>
+    </StyledTop>
   );
 }

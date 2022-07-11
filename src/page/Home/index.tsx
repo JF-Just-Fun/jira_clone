@@ -1,35 +1,30 @@
 import { useEffect, useRef, useState } from 'react';
-import { Header, Container, Content, SecurityArea } from './style';
+import { Header, Container, Content } from './style';
 import { useScrollTrigger } from '@mui/material';
-import TopTitle from './components/TopTitle';
-import TopNav from './components/TopNav';
+import Top from './components/Top';
+import Nav from './components/Nav';
 import Aside from './components/Aside';
+import { Outlet } from 'react-router-dom';
 
 export default function Home() {
   const [asideClose, setAsideClose] = useState<boolean>(true);
 
   const handleAsidePin = () => setAsideClose((preValue) => !preValue);
 
-  const containerRef = useRef<HTMLElement>();
   const scrollTrigger = useScrollTrigger({
-    target: containerRef.current,
-    threshold: 300,
+    threshold: 50,
   });
-
-  useEffect(() => {
-    console.log('=> scrollTrigger', scrollTrigger);
-  }, [scrollTrigger]);
 
   return (
     <>
       <Aside $close={asideClose} pinHandle={handleAsidePin} />
-      <Container ref={containerRef} $close={asideClose}>
-        <Header>
-          <TopTitle />
-          <TopNav />
+      <Container $close={asideClose}>
+        <Header in={scrollTrigger ? 1 : 0}>
+          <Top />
+          <Nav />
         </Header>
         <Content>
-          <SecurityArea></SecurityArea>
+          <Outlet />
         </Content>
       </Container>
     </>

@@ -6,7 +6,7 @@ interface logoProps {
   $size?: number;
 }
 
-export const Logo = styled(
+export default styled(
   createSvgIcon(
     [
       <path
@@ -37,12 +37,12 @@ export const Logo = styled(
     ],
     'myLogo',
   ),
-)<logoProps>`
+).attrs((props) => ({ viewBox: '0 0 1847 1024' }))<logoProps>`
   color: ${(props) => props.$color};
   font-size: ${(props) => (props.$size ? `${props.$size}px` : '48px')};
   height: ${(props) => Math.round((props.$size || 48) / 1.8)}px;
 `;
 
-export default function LogoSvg(props: logoProps) {
-  return <Logo viewBox="0 0 1847 1024" {...props} />;
-}
+// export default function LogoSvg(props: logoProps) {
+//   return <Logo viewBox="0 0 1847 1024" {...props} />;
+// }

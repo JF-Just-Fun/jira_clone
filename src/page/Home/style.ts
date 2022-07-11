@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 interface containerProps {
   $close: boolean;
-  ref?: any;
+}
+interface headerProps {
+  in: number;
 }
 
 export const transitionTime = '0.3s ease-in-out';
@@ -22,13 +24,15 @@ export const SecurityArea = styled('div')`
 `;
 
 const headerHeight = 110;
-export const Header = styled('header')`
+export const Header = styled('header')<headerProps>`
+  position: relative;
   top: 0;
-  height: ${headerHeight}px;
-  background-color: #ffffff99;
+  height: ${(props) => (props.in ? 61 : headerHeight)}px;
+  background-color: #ffffff;
   backdrop-filter: blur(5px);
   border-bottom: 1px solid #cbcbcb;
   z-index: 1;
+  transition: height 0.3s;
   ${SecurityArea} {
     display: flex;
     justify-content: space-between;
