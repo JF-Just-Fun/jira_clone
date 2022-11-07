@@ -35,6 +35,9 @@ const LinkTab = (props: linkTabProps) => {
       onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         event.preventDefault();
         navigate(`${props.value}`);
+        document.querySelector('#root')!.scrollIntoView({
+          block: 'start',
+        });
       }}
       {...props}
     />
