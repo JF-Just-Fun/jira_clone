@@ -1,7 +1,5 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import type { FC } from 'react';
-import React, { useState, useCallback } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
