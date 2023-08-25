@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import Router from './router';
 import { CssBaseline } from '@mui/material';
@@ -11,9 +10,7 @@ root.render(
   <React.StrictMode>
     <CssBaseline />
     <GlobalStyle />
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
+    <Router />
   </React.StrictMode>,
 );
 
