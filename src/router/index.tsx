@@ -6,7 +6,7 @@ import Detail from '@/page/Detail';
 
 export default function Router() {
   return (
-    <BrowserRouter basename={process.env.REACT_ROUTE_BASE}>
+    <BrowserRouter basename={process.env.REACT_APP_ROUTE_BASE}>
       <Routes>
         <Route path="/" element={<Home />}>
           <Route path="kanban" element={<Kanban />}>
